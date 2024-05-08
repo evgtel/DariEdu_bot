@@ -24,6 +24,8 @@ class CryptoConverter:
 
         try:
             amount = float(amount)
+            if amount < 0:
+                raise APIException(f"Количество не должно быть отрицательным.")
         except ValueError:
             raise APIException(f"Не удалось обработать количество {amount}.")
 
