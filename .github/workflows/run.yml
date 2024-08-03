@@ -26,6 +26,9 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Set environment variable
+        env:
+          TOKEN: ${{secrets.TOKEN}}
       - name: test_1
         if: "github.event.inputs.deployment_target == 'test_1'"
         run: python  app_currencybot.py
