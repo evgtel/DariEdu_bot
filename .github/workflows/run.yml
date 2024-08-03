@@ -1,1 +1,39 @@
+name: Test bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Выберите тест
+        required: true
+        default: test_1
+        type: choice
+        options:
+          - test_1
+          - test_2
+          - test_3
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: test_1
+        if: "github.event.inputs.deployment_target == 'test_1'"
+        run: python  app_currencybot.py
+      - name: test_2
+        if: "github.event.inputs.deployment_target == 'test_2'"
+        run: ls
+      - name: test_3
+        if: "github.event.inputs.deployment_target == 'test_3'"
+        run: ls
+      
 
