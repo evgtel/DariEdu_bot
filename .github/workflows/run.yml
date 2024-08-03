@@ -29,7 +29,7 @@ jobs:
       - name: Set environment variable
         env:
           TOKEN: ${{secrets.TOKEN}}
-        run: echo "TOKEN="${{secrets.TOKEN}}" >> $GITHUB_ENV
+        run: echo "TOKEN=${{secrets.TOKEN}}" >> $GITHUB_ENV
       - name: test_1
         if: "github.event.inputs.deployment_target == 'test_1'"
         run: python  app_currencybot.py
