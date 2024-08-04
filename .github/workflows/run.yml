@@ -32,7 +32,7 @@ jobs:
         run: echo "TOKEN=${{secrets.TOKEN}}" >> $GITHUB_ENV
       - name: test_1
         if: "github.event.inputs.deployment_target == 'test_1'"
-        run: python  app_currencybot.py
+        run: python  app_dariedu.py
       - name: test_2
         if: "github.event.inputs.deployment_target == 'test_2'"
         run: ls
