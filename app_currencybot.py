@@ -48,23 +48,7 @@ def message_reply(message):
 
 @bot.message_handler()
 def function_name(message):
-    try:
-        convert_str=[]
-        pr_str = message.text.split(' ')
-        for ss in pr_str:
-            if ss != '':
-                convert_str.append(ss)
-        if len(convert_str) != 3:
-            raise APIException("Ошибка: параметров должно быть 3.")
-
-        base, quote, amount = convert_str
-        total_base = CryptoConverter.get_price(base, quote, amount)
-    except APIException as e:
-        bot.reply_to(message, f'Ошибка пользователя.\n{e}')
-    except Exception as e:
-        bot.reply_to(message, f'Ошибка программы.\n{e}')
-    else:
-        bot.reply_to(message, f"Цена {amount} {base} - {total_base} {quote}")
+    pass
 
 
 bot.polling(none_stop=True)
